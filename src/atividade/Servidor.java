@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class Servidor {
     public static void main(String[] args) {
         try (ServerSocket servidor = new ServerSocket(999)){
-            
+            System.out.println("Aguardando conexão");
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
