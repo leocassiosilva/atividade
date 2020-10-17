@@ -12,22 +12,22 @@ import java.util.logging.Logger;
  * @author Leocassio
  */
 
-public class Tratamento implements Runnable {
+public class Tratamento implements Runnable { //implementa o Runnable
 
-    private Socket conexao; //Crindo um atributo 
+    private Socket conexao; //Crindo um atributo de conexao 
 
-    public Tratamento(Socket conexao) {
+    public Tratamento(Socket conexao) { //construtor da classe
         this.conexao = conexao;
     }
 
     @Override
     public void run() {
         try {
-            System.out.println("Conexão efetuada " + conexao.getInetAddress().getHostAddress());
+            System.out.println("Conexão efetuada " + conexao.getInetAddress().getHostAddress()); //Informar que a conexao foi efetuada
 
             Scanner leitura = new Scanner(conexao.getInputStream()); //Utilizada para realizar a leitura 
 
-            PrintStream escrita = new PrintStream(conexao.getOutputStream());
+            PrintStream escrita = new PrintStream(conexao.getOutputStream()); //utilizada para escrita
 
             
             boolean op = true;
@@ -37,8 +37,8 @@ public class Tratamento implements Runnable {
            String mensagem;
             do {
                 String menu = "1 - Refrigerante; 2 - Sanduiche; 3 - Batata Frita; 0 - Sair;";
-                escrita.println(menu);
-                mensagem = leitura.nextLine();
+                escrita.println(menu); //manda para o cliente 
+                mensagem = leitura.nextLine(); //recebe do cliente um numero
                 System.out.println(mensagem);
                 switch (mensagem) {
                     case "1":
@@ -56,7 +56,7 @@ public class Tratamento implements Runnable {
                     case "0":
                         System.out.println("Você saiu!");
                         System.out.println(total);
-                        escrita.println(total);
+                        escrita.println(total); //manda para o cliente
                         op = false;
                         break;
                     default:
@@ -64,8 +64,8 @@ public class Tratamento implements Runnable {
                 }
             } while (op);
 
-            leitura.close();
-            conexao.close();
+            leitura.close(); //finaliza
+            conexao.close();//finaliza
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }

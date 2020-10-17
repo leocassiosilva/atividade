@@ -14,13 +14,13 @@ import java.util.logging.Logger;
 public class Servidor {
     public static void main(String[] args) {
         try (ServerSocket servidor = new ServerSocket(999)){
-            System.out.println("Aguardando conexão");
+            System.out.println("Aguardando conexão"); // Informa que o servidor está aguardando uma conexao 
 
             while (true) {
-                Socket conexao = servidor.accept();
-                Tratamento tratamento = new Tratamento(conexao);
-                Thread thread = new Thread(tratamento);
-                thread.start();
+                Socket conexao = servidor.accept();  //inica conexao
+                Tratamento tratamento = new Tratamento(conexao); //instancia o objeto tratamento  
+                Thread thread = new Thread(tratamento); //Instanciar um objeto thread e passa como parametro um objeto tratamento
+                thread.start(); //da start na thread
             }
                 
                 
