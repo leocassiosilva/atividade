@@ -29,7 +29,6 @@ public class Cliente {
                 mensagem = teclado.nextLine();
                 saida.println(mensagem);
                 System.out.println(entrada.nextLine());
-                
             } while (op);
            
             teclado.close();
