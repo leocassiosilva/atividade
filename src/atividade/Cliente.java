@@ -12,6 +12,7 @@ import java.util.logging.Logger;
  * @author Leocassio
  */
 public class Cliente {
+
     public static void main(String[] args) {
         try {
             Socket conexao = new Socket("localhost", 999);
@@ -20,19 +21,23 @@ public class Cliente {
             Scanner entrada = new Scanner(conexao.getInputStream());
             
             Scanner teclado = new Scanner(System.in);
-
-            String mensagem; 
-            
             System.out.println(entrada.nextLine());
             
-                        
+            boolean op = true;
+            String mensagem; 
+            do {
+                mensagem = teclado.nextLine();
+                saida.println(mensagem);
+                System.out.println(entrada.nextLine());
+                
+            } while (op);
+           
             teclado.close();
             saida.close();
             conexao.close();
-  
-            
+
         } catch (IOException ex) {
-             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
